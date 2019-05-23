@@ -62,44 +62,42 @@ public class Punto2 {
 
 		return count / 2;  
 	} 
+	
+	
 
 	public static void main(String[] args) { 
-		Punto2 instancia = new Punto2();
+		
 		try {
 			InputStreamReader is= new InputStreamReader(System.in);
 			BufferedReader br = new BufferedReader(is); 
-			String line = br.readLine();
 
 			//valores iniciales del grafo
-			final String [] in = line.split(" ");
+			
+			String line = br.readLine();
+			String [] in = line.split(" ");
 			int n=Integer.parseInt(in[0]);
 			int k= Integer.parseInt(in[1]);
-			int grafo[][]= new int[n][n];
-			line = br.readLine();
-			for(int i=1; i<n && line!=null && line.length()>0 && !"0 0".equals(line); i++) {
-
-				final String [] dataStr = line.split(" ");
-				for (int j=1; j<dataStr.length; j++)
-				{
-					//Valor de la columna 
-					int c= Integer.parseInt(dataStr[j]);
-					grafo[i-1][c-1]=1;
-					grafo[c-1][i-1]=1;
-				}
+			
+			while(n!=0&&k!=0)
+			{
+				analize(n,k,br);
+				count=0;
 				line = br.readLine();
+				in = line.split(" ");
+				n=Integer.parseInt(in[0]);
+				k= Integer.parseInt(in[1]);
 
 			}
 			
-			for (int i = 0; i < grafo.length; i++) {
-				for (int j = 0; j < grafo.length; j++) {
-					System.out.print(grafo[i][j]+ " ");
-				}
-				System.out.println();
-			}
-			System.out.println("Aqui va el grafo");
+			
+//			for (int i = 0; i < grafo.length; i++) {
+//				for (int j = 0; j < grafo.length; j++) {
+//					System.out.print(grafo[i][j]+ " ");
+//				}
+//				System.out.println();
+//			}
+//			System.out.println("Aqui va el grafo");
 
-			int respuesta = instancia.contarCircuitos(grafo,k,n);
-			System.out.println(respuesta);
 
 		} 
 		catch (Exception e) {
@@ -109,4 +107,34 @@ public class Punto2 {
 	}
 
 
+
+	public static void analize(int n, int k ,BufferedReader br)
+	{
+		try {
+		int grafo[][]= new int[n][n];
+		String line = br.readLine();
+		String [] dataStr = line.split(" ");
+			for(int i=1; i<=n ; i++) {
+				
+				dataStr = line.split(" ");
+				for (int j=1; j<dataStr.length; j++)
+				{
+					//Valor de la columna 
+					int c= Integer.parseInt(dataStr[j]);
+					grafo[i-1][c-1]=1;
+					grafo[c-1][i-1]=1;
+				}
+				if(i!=n)
+				{
+					line = br.readLine();	
+				}
+			}
+			Punto2 instancia = new Punto2();
+			int respuesta = instancia.contarCircuitos(grafo,k,n);
+			System.out.println(respuesta);
+		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }
