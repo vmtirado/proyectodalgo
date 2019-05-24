@@ -28,22 +28,42 @@ public class Punto1 {
 
 	public int buscarSubArreglo(int[] arreglo){
 		//Longitud del arreglo mas largo 
-		int m= 1;
-		int c=1;
-		for (int i=1; i<arreglo.length; i++)
+		int l= 0;
+		int c=0;
+		int d=0;
+		int mp=-1;
+		int ip=-1;
+		int mn=-1;
+		for (int i=arreglo.length-1; i>=0; i--)
 		{
-			int n= arreglo[i]<0? arreglo[i]*-1: arreglo[i];
-
-			if (n<arreglo[i-1])
+			if (arreglo[i]<0)
 			{
-				if (c>m)
+				if (arreglo[i]*-1>mn)
 				{
-					m=c; 
+					mn=arreglo[i]*-1;
+					d=ip-i;
 				}
-				c=0;
 			}
-			c++;	
+			else 
+			{
+				if (arreglo[i]>mp)
+				{
+					if(arreglo[i]>mn)
+					{
+						mp=arreglo[i];
+						ip=i;
+						c=0;
+					}
+					else 
+						c-=d;
+				}
+			}
+			c++;
+			if(c>l)
+			{
+				l=c;
+			}
 		}
-		return m;
+		return l;
 	}
 }
