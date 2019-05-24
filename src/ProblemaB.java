@@ -12,15 +12,13 @@ public class ProblemaB {
 		// marca el vertice como visitado 
 		marcados[vert] = true; 
 
-		// if the path of length (n-1) is found 
+		// si encuentro el camino 
 		if (n == 0) { 
 
-			// mark vert as un-visited to  
-			// make it usable again 
+			// desmarca el vertice 
 			marcados[vert] = false; 
 
-			// Check if vertex vert end  
-			// with vertex start 
+			// Revisa que termine donde empezo 
 			if (grafo[vert][ini] == 1) { 
 				count++; 
 				return; 
@@ -28,35 +26,28 @@ public class ProblemaB {
 				return; 
 		} 
 
-		// For searching every possible  
-		// path of length (n-1) 
+		// Busca cada camino posible (k-1)
 		for (int i = 0; i < v; i++) 
 			if (!marcados[i] && grafo[vert][i] == 1) 
 
-				// DFS for searching path by 
-				// decreasing length by 1 
+				// DFS 
 				DFS(grafo, marcados, n-1, i, ini,v); 
 
-		// marking vert as unvisited to make it 
-		// usable again 
+		// Desmarca el vertice  
 		marcados[vert] = false; 
 	} 
 
-	// Count cycles of length N in an  
-	// undirected and connected graph. 
+	// Cuenta los ciclos. 
 	public  int contarCircuitos(int grafo[][], int k, int v) { 
 
-		// all vertex are marked un-visited 
-		// initially. 
+		// Array de vertices  
 		boolean marked[] = new boolean[v]; 
 
-		// Searching for cycle by using  
-		// v-n+1 vertices 
+
 		for (int i = 0; i < v - (k - 1); i++) { 
 			DFS(grafo, marked, k-1, i, i,v); 
 
-			// ith vertex is marked as visited 
-			// and will not be visited again 
+			// marca vertices 
 			marked[i] = true; 
 		} 
 
@@ -89,14 +80,6 @@ public class ProblemaB {
 
 			}
 			
-			
-//			for (int i = 0; i < grafo.length; i++) {
-//				for (int j = 0; j < grafo.length; j++) {
-//					System.out.print(grafo[i][j]+ " ");
-//				}
-//				System.out.println();
-//			}
-//			System.out.println("Aqui va el grafo");
 
 
 		} 
