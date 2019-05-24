@@ -55,7 +55,12 @@ public class Punto1 {
 						c=0;
 					}
 					else 
+					{
+						mp= arreglo[i];
+						ip=i;
 						c-=d;
+					}
+						
 				}
 			}
 			c++;
