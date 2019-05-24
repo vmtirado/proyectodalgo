@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-
+//Autora: Vilma Tirado Gómez
 public class ProblemaB {
 
 	static int count = 0; 
