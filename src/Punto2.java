@@ -6,22 +6,22 @@ public class Punto2 {
 
 	static int count = 0; 
 
-	public void DFS(int graph[][], boolean marked[], 
-			int n, int vert, int start, int v) { 
+	public void DFS(int grafo[][], boolean marcados[], 
+			int n, int vert, int ini, int v) { 
 
-		// mark the vertex vert as visited 
-		marked[vert] = true; 
+		// marca el vertice como visitado 
+		marcados[vert] = true; 
 
 		// if the path of length (n-1) is found 
 		if (n == 0) { 
 
 			// mark vert as un-visited to  
 			// make it usable again 
-			marked[vert] = false; 
+			marcados[vert] = false; 
 
 			// Check if vertex vert end  
 			// with vertex start 
-			if (graph[vert][start] == 1) { 
+			if (grafo[vert][ini] == 1) { 
 				count++; 
 				return; 
 			} else
@@ -31,20 +31,20 @@ public class Punto2 {
 		// For searching every possible  
 		// path of length (n-1) 
 		for (int i = 0; i < v; i++) 
-			if (!marked[i] && graph[vert][i] == 1) 
+			if (!marcados[i] && grafo[vert][i] == 1) 
 
 				// DFS for searching path by 
 				// decreasing length by 1 
-				DFS(graph, marked, n-1, i, start,v); 
+				DFS(grafo, marcados, n-1, i, ini,v); 
 
 		// marking vert as unvisited to make it 
 		// usable again 
-		marked[vert] = false; 
+		marcados[vert] = false; 
 	} 
 
 	// Count cycles of length N in an  
 	// undirected and connected graph. 
-	public  int contarCircuitos(int graph[][], int k, int v) { 
+	public  int contarCircuitos(int grafo[][], int k, int v) { 
 
 		// all vertex are marked un-visited 
 		// initially. 
@@ -53,7 +53,7 @@ public class Punto2 {
 		// Searching for cycle by using  
 		// v-n+1 vertices 
 		for (int i = 0; i < v - (k - 1); i++) { 
-			DFS(graph, marked, k-1, i, i,v); 
+			DFS(grafo, marked, k-1, i, i,v); 
 
 			// ith vertex is marked as visited 
 			// and will not be visited again 
@@ -80,7 +80,7 @@ public class Punto2 {
 			
 			while(n!=0&&k!=0)
 			{
-				analize(n,k,br);
+				analizar(n,k,br);
 				count=0;
 				line = br.readLine();
 				in = line.split(" ");
@@ -108,7 +108,7 @@ public class Punto2 {
 
 
 
-	public static void analize(int n, int k ,BufferedReader br)
+	public static void analizar(int n, int k ,BufferedReader br)
 	{
 		try {
 		int grafo[][]= new int[n][n];
