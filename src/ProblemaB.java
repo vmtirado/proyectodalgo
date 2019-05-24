@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Punto2 {
+public class ProblemaB {
 
 	static int count = 0; 
 
@@ -129,7 +129,7 @@ public class Punto2 {
 					line = br.readLine();	
 				}
 			}
-			Punto2 instancia = new Punto2();
+			ProblemaB instancia = new ProblemaB();
 			int respuesta = instancia.contarCircuitos(grafo,k,n);
 			System.out.println(respuesta);
 		

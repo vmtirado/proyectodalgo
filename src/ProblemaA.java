@@ -2,10 +2,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class Punto1 {
+public class ProblemaA {
 
 	public static void main(String[] args) throws Exception {
-		Punto1 instancia = new Punto1();
+		ProblemaA instancia = new ProblemaA();
 		try ( 
 				InputStreamReader is= new InputStreamReader(System.in);
 				BufferedReader br = new BufferedReader(is);
